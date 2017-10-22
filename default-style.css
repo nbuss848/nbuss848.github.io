@@ -1,8 +1,20 @@
-#footer{
+footer{
 	background-color: #2B2B2B;
 	min-height: 100px;
+	max-height: 120px;
 	font-weight: bold;
-	color: #8B8B8B;
+	color: rgb(190, 190, 190);
+	padding-bottom: 50px;
+	vertical-align: center;
+	padding-top: 42.5px;
+}
+
+p{
+	font-size: 16px;
+}
+
+.main{
+	min-height: 550px;
 }
 
 .banner{
