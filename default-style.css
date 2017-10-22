@@ -9,6 +9,13 @@ footer{
 	padding-top: 42.5px;
 }
 
+h4
+{
+	color: #8A0B39;
+	text-transform: uppercase;
+	font-family: 'Bree Serif', serif;
+}
+
 p{
 	font-size: 16px;
 }
