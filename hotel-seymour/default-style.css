@@ -1,0 +1,30 @@
+footer{
+	background-color: #2B2B2B;
+	min-height: 100px;
+	max-height: 120px;
+	font-weight: bold;
+	color: rgb(190, 190, 190);
+	padding-bottom: 50px;
+	vertical-align: center;
+	padding-top: 42.5px;
+}
+
+h4
+{
+	color: #8A0B39;
+	text-transform: uppercase;
+	font-family: 'Bree Serif', serif;
+}
+
+p{
+	font-size: 16px;
+}
+
+.main{
+	min-height: 550px;
+}
+
+.banner{
+      background-color: rgb(255,255,255);
+      text-align: center;
+    }

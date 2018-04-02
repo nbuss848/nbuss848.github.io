@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blog Home - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+  <!-- Custom styles for this template -->
+  <link href="css/portfolio-item.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">Posts
+          <small></small>
+        </h1>
+
+        <h1>Programming the 3x3 Rubik's Cube</h1>
+        <p>
+          For those who are not familiar with the Rubix cube it is a popular puzzle that has many different variations. In this article
+          I want to cover the 3X3 version of the puzzle. There are 6 sides with 3 columns and 3 rows of different colors:
+          yellow, orange, blue, red, green, and white. There are many challenges to programming this from scratch and as
+          mentioned earlier there are many resources online that probably do it better than I can. That being said let’s
+          get started.
+        </p>
+        <h1>First Journey</h1>
+        <p>My first task was to define the cube so I could start playing around with moving it and even try solving it on the
+          screen. I wanted to stay away from anything 3D starting out with, but is definitely something I want to get to
+          long term. I defined the cube the best I could and created algorithms for each move. I did it by describing the
+          cube by each face of the cube, if you are not familiar with cube notation it goes like this. f-front, t-top, l-left,
+          r-right, d-down, b-back.</p>
+
+        <h4>
+          <u>Solving</u>
+        </h4>
+        <h5>Start</h5>
+        <p>
+          <ul>
+            <li>
+              Check to see if there is at least one piece in the correct layer, but in the wrong place.
+              <ul>
+                <li>Turn the layer until the piece is in the correct spot</li>
+                <li>Once we get here we will need algorithms to continue</li>
+              </ul>
+            </li>
+            <li>
+              <h6>Flip Edge</h6>
+              <code class="highlight">F2 D R F' R'</code>
+            </li>
+            <li>If all the pieces are a part of the layer then we can do algorithms to fix the issue.
+              <ul>
+                <li>
+                  <p>Once the pieces are flipped right side up and part of the same layer we can use the algorithm.</p>
+                  <code class="highlight">R L' F2 R' L U2 R L' F2 R' L U2 F2</code>
+                </li>
+                <li>
+                  <p>To do a variation of the algorithm above to make it a little more generialized. Set up you're cube so switch
+                    to edges at once.</p>
+                  <code class="highlight">R L' F2 R' L U R L' F2 R' L U' F2 X2 Repeat</code>
+                  <p>Long Hand</p>
+                  <code class="highlight">R L' F2 R' L U R L' F2 R' L U' F2 L R' B2 R L U L R' B2 L' R U' B2</code>
+                  <p>If we have to do only three edges. Let's assume clockwise rotation of edges. Make sure solved edge is on
+                    the left</p>
+                  <code class="highlight">L' R F2 L R' U2 F2 U' R L' F2 R' L U' F2</code>
+                  <p>~ repeat two more times if needed</p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h5>Corners</h5>
+              <ul>
+                <li>
+                  <p>Find the correct corner and identify the destination. Rotate the bottom until that corner is where it needs
+                    to be. Then preform the following until the corner pops up.</p>
+                  <code class="highlight">R' D' R D</code>
+                  <p>Turn the cube and repeat, or you can use U as well and then use D to locate the next corner</p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h5>Edges of second layer</h5>
+              <ul>
+                <h6>Turn Cube and or the U layer to figure out where to place the edge.</h6>
+                <li>
+                  <p>
+                    If you have to move edge to the left use</p>
+                  <code class="highlight">U' L' U L U F U' F'</code>
+                  <p>
+                    If you have to move edge to the right use
+                  </p>
+                  <code class="highlight">U R U' R' U' F' U F</code>
+                  <p>If all is done correctly the second layer should be complete</p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h5>Solve top layer for cross</h5>
+              <p>
+                  Count the number of edges correctly oriented.
+              </p>
+
+              <ul>
+                <li>
+                  <p>If the three edges is in the shape of an L use</p>
+                  <code class="highlight">F R U  R' U' R U R' U' F'</code>
+                </li>
+                <li> <p>If the three edges are in a stright line use</p>
+                  <code class="highlight">F R U  R' U' F'</code></li>
+                
+              </ul>                
+            </li>
+            <li>
+              <h5>Rotate Corners</h5>
+              
+            </li>
+          </ul>
+        </p>
+
+        <h1>Code Review</h1>
+        <p>Each turn method looks like this. This is the method for the back-layer turn</p>
+        <pre><code class="prettyprint">
+    var topTemp = new char[3] { TopLayer[0, 0], 
+      TopLayer[0, 1], TopLayer[0, 2] };
+
+    var bottomTemp = new char[3] { DownLayer[2, 0], 
+      DownLayer[2, 1], DownLayer[2, 2] };
+      
+    var leftTemp = new char[3] { LeftLayer[0, 0], 
+      LeftLayer[1, 0], LeftLayer[2, 0] };
+
+    var rightTemp = new char[3] { RightLayer[0, 2], 
+      RightLayer[1, 2], RightLayer[2, 2] };
+
+    // ---------------------------------------------------------
+    var centers = new char[] { BackLayer[1, 0], 
+      BackLayer[2, 1], BackLayer[1, 2], BackLayer[0, 1] };
+
+    var corners = new char[] { BackLayer[2, 0], 
+      BackLayer[2, 2], BackLayer[0, 2], BackLayer[0, 0] };
+
+    // Corners           
+    BackLayer[0, 0] = corners[0];
+    BackLayer[2, 0] = corners[1];
+    BackLayer[2, 2] = corners[2];
+    BackLayer[0, 2] = corners[3];
+
+    // Centers
+    BackLayer[0, 1] = centers[0];
+    BackLayer[1, 0] = centers[1];
+    BackLayer[2, 1] = centers[2];
+    BackLayer[1, 2] = centers[3];
+    // ---------------------------------------------------------
+
+    // right to top
+    TopLayer[0, 0] = rightTemp[0];
+    TopLayer[0, 1] = rightTemp[1];
+    TopLayer[0, 2] = rightTemp[2];
+
+    // bottom to right            
+    RightLayer[0, 2] = bottomTemp[2];
+    RightLayer[1, 2] = bottomTemp[1];
+    RightLayer[2, 2] = bottomTemp[0];
+
+    // left to bottom
+    DownLayer[2, 0] = leftTemp[0];
+    DownLayer[2, 1] = leftTemp[1];
+    DownLayer[2, 2] = leftTemp[2];
+
+    // top to left
+    LeftLayer[0, 0] = topTemp[2];
+    LeftLayer[1, 0] = topTemp[1];
+    LeftLayer[2, 0] = topTemp[0];</code></pre>
+        <p>My first comment on this is that we don't need to keep a copy of each of the layers, in fact we only have to choose
+          one corner and one edge.</p>
+        <!--   <pre>
+     <code class="prettyprint">
+    var face = BackLayer[0,0];
+    BackLayer[0,0] = BackLayer[2,0];
+    BackLayer[2,0] = BackLayer[2,2];
+    BackLayer[2,2] = BackLayer[0,2];
+    BackLayer[0,2] = face;
+    
+    var top = TopLayer[0,2];
+    TopLayer[0,2] = RightLayer[2,2];
+    RightLayer[2,2] = DownLayer[2,0];
+    DownLayer[2,0] =  LeftLayer[0,0];
+    LeftLayer[0,0] = top;
+
+    var right = RightLayer[0,2];
+    RightLayer[0,2] = DownLayer[2,2];
+    DownLayer[2,2] = LeftLayer[2,0];
+    LeftLayer[2,0] = TopLayer[0,0];
+    TopLayer[0,0] = right;
+      </code>
+    </pre>-->
+        <h2>Refactoring</h2>
+        <h2>
+          <u>Testing</u>
+        </h2>
+        <h4>Scamble the cube and solve</h4>
+        <pre>
+    <code class="prettyprint">
+      var scramble = "F R2 U2 L2 B D R' U2".Split(' ');
+      var solution = "U2 R D' F' U2 R2 U2 F' U 
+        D R2 B2 U D L2 B2 U2 L2".Split(' ');
+
+      var cube = new RubixCube.Cube();
+      cube.Interpret(scramble);
+      cube.Interpret(solution);
+
+      Assert.AreEqual(cube.ToString(), 
+        new RubixCube.Cube().ToString());
+    </code></pre>
+
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="#">&larr; Older</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Newer &rarr;</a>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">Web Design</a>
+                  </li>
+                  <li>
+                    <a href="#">HTML</a>
+                  </li>
+                  <li>
+                    <a href="#">Freebies</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">JavaScript</a>
+                  </li>
+                  <li>
+                    <a href="#">CSS</a>
+                  </li>
+                  <li>
+                    <a href="#">Tutorials</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Side Widget</h5>
+          <div class="card-body">
+            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="content/jquery/jquery.min.js"></script>
+  <script src="content/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
