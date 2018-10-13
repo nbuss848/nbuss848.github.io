@@ -11,62 +11,58 @@
 
   <script src="bootstrap-4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="bootstrap-4.1/css/bootstrap.min.css">
-
   <link rel="stylesheet" type="text/css" href="default-style.css">
 </head>
 
 <body>
-
-
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="index.html"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="links.html">Links</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="menu.html">Menu</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
-
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="links.html">Links</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="menu.html">Menu</a>
+            </li>
+            <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
+          </ul>
+          
+        </div>
+      </nav>
+</div>
   <div class="container">
     <div class="row">
       <div class="col-md-12 banner"><img src="images/banner.jpg" class="center" id="banner" /></div>
     </div>
-      <div class="row">
-        <div class="col-md-12 text-center">          
-          <h1>Hotel Seymour</h1>
-          <h2>American Pub &amp; Ale House</h2>
-          <p>
-            <span class="glyphicon glyphicon-home"></span>
-            210 South Main Street Seymour, WI 54165
-            <br/>
-            <span class="glyphicon glyphicon-phone">(920)833-6441</span>
-          </p>
-        </div>       
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Hotel Seymour</h1>
+        <h2>American Pub &amp; Ale House</h2>
+        <p>
+          <span class="glyphicon glyphicon-home"></span>
+          210 South Main Street Seymour, WI 54165
+          <br/>
+          <span class="glyphicon glyphicon-phone">(920)833-6441</span>
+        </p>
       </div>
-      <div class="row">
-        <div class="col-md-9 offset-md-4">
-          <h3>Serving Hours</h3>
-          <table id="serving-hours" class="table table-responsive">
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-center">Serving Hours</h3>
+        <div class="table-responsive col-md-4 offset-md-4 text-center">
+          <table id="serving-hours" class="table">
             <tr>
-              <td class="bg-danger">Monday</td>
-              <td class="bg-danger">Closed</td>
+              <td class="">Monday</td>
+              <td class="badge-warning">Closed</td>
             </tr>
             <tr>
               <td>Tuesday</td>
@@ -94,7 +90,10 @@
             </tr>
           </table>
         </div>
-      <div class="row">
+      </div>
+    </div>
+    <div class="row">      
+        <div class="col-md-12 text-center">
         <h2>Dirrections</h2>
         <p>
           From Green Bay, take Highway 54 west about 15 minutes
@@ -102,9 +101,9 @@
         <p>
           From Appleton, take Highway 55 north about 20 minutes
         </p>
-      </div>  
       </div>
     </div>
+  </div>
 </body>
 
 <footer class="mastfoot mt-auto">
