@@ -28,7 +28,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Blog</a>
+      <a class="navbar-brand" href="blog.html">Blog</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -84,167 +84,47 @@
         <h4>
           <u>Solving</u>
         </h4>
-        <h5>Start</h5>
+        <h5>Overview</h5>
         <p>
-          <ul>
-            <li>
-              Check to see if there is at least one piece in the correct layer, but in the wrong place.
-              <ul>
-                <li>Turn the layer until the piece is in the correct spot</li>
-                <li>Once we get here we will need algorithms to continue</li>
-              </ul>
-            </li>
-            <li>
-              <h6>Flip Edge</h6>
-              <code class="highlight">F2 D R F' R'</code>
-            </li>
-            <li>If all the pieces are a part of the layer then we can do algorithms to fix the issue.
-              <ul>
-                <li>
-                  <p>Once the pieces are flipped right side up and part of the same layer we can use the algorithm.</p>
-                  <code class="highlight">R L' F2 R' L U2 R L' F2 R' L U2 F2</code>
-                </li>
-                <li>
-                  <p>To do a variation of the algorithm above to make it a little more generialized. Set up you're cube so switch
-                    to edges at once.</p>
-                  <code class="highlight">R L' F2 R' L U R L' F2 R' L U' F2 X2 Repeat</code>
-                  <p>Long Hand</p>
-                  <code class="highlight">R L' F2 R' L U R L' F2 R' L U' F2 L R' B2 R L U L R' B2 L' R U' B2</code>
-                  <p>If we have to do only three edges. Let's assume clockwise rotation of edges. Make sure solved edge is on
-                    the left</p>
-                  <code class="highlight">L' R F2 L R' U2 F2 U' R L' F2 R' L U' F2</code>
-                  <p>~ repeat two more times if needed</p>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <h5>Corners</h5>
-              <ul>
-                <li>
-                  <p>Find the correct corner and identify the destination. Rotate the bottom until that corner is where it needs
-                    to be. Then preform the following until the corner pops up.</p>
-                  <code class="highlight">R' D' R D</code>
-                  <p>Turn the cube and repeat, or you can use U as well and then use D to locate the next corner</p>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <h5>Edges of second layer</h5>
-              <ul>
-                <h6>Turn Cube and or the U layer to figure out where to place the edge.</h6>
-                <li>
-                  <p>
-                    If you have to move edge to the left use</p>
-                  <code class="highlight">U' L' U L U F U' F'</code>
-                  <p>
-                    If you have to move edge to the right use
-                  </p>
-                  <code class="highlight">U R U' R' U' F' U F</code>
-                  <p>If all is done correctly the second layer should be complete</p>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <h5>Solve top layer for cross</h5>
-              <p>
-                  Count the number of edges correctly oriented.
-              </p>
-
-              <ul>
-                <li>
-                  <p>If the three edges is in the shape of an L use</p>
-                  <code class="highlight">F R U  R' U' R U R' U' F'</code>
-                </li>
-                <li> <p>If the three edges are in a stright line use</p>
-                  <code class="highlight">F R U  R' U' F'</code></li>
-                
-              </ul>                
-            </li>
-            <li>
-              <h5>Rotate Corners</h5>
-              
-            </li>
-          </ul>
+          There are usually three different steps when learning  how to solve a rubix cube. 
+          To teach a computer how to solve the cube I had to break down the process into seven different steps.
+          <ol>
+            <li>Get all blue colors in the top layer</li>
+            <li>Fix blue edges so that they are facing towards the blue center</li>
+            <li>Fix blue edges so that each correlating edge matches each center</li>
+            <li>Solve each corner in the top edges</li>
+            <li>Flip cube and start solving edges in the second layer</li>
+            <li>Preform algorithms until corners are in the correct place, but not solved</li>
+            <li>Solve each corner with an algorithm until the cube is solved</li>
+          </ol>
+        </p>
+        <h5>A better way with Kociemba's Algorithm</h5>
+        <h6>Phase 1</h6>
+        <p>In phase 1, the algorithm looks for maneuvers which will transform a scrambled cube to G1. 
+          That is, the orientations of corners and edges have to be constrained and the edges of the UD-slice have to be transferred into that slice. 
+          In this abstract space, a move just transforms a triple (x,y,z) into another triple (x',y',z'). 
+          All cubes of G1 have the same triple (x0,y0,z0) and this is the goal state of phase 1.
+            To find this goal state the program uses a search algorithm which is called iterative deepening A* with a lowerbound heuristic function (IDA*). 
+            In the case of the Cube, this means that it iterates through all maneuvers of increasing length. 
+            The heuristic function h1(x,y,z) estimates for each cube state (x,y,z) the number of moves that are necessary to reach the goal state. 
+            It is essential that the function never overestimates this number. 
+            In Cube Explorer 2, it gives the exact number of moves which are necessary to reach the goal state in Phase 1. 
+            The heuristic allows pruning while generating the maneuvers, which is essential if you do not want to wait a very, very long time before the goal state is reached. 
+            The heuristic function h1 is a memory based lookup table and allows pruning up to 12 moves in advance.          
+        </p>
+        <h6>Phase 2</h6>
+        <p>
+          In phase 2 the algorithm restores the cube in the subgroup G1, using only moves of this subgroup. 
+          It restores the permutation of the 8 corners, the permutation of the 8 edges of the U-face and D-face and the permutation of the 4 UD-slice edges. 
+          The heuristic function h2(a,b,c) only estimates the number of moves that are necessary to reach the goal state, because there are too many different elements in G1.
         </p>
 
         <h1>Code Review</h1>
         <p>Each turn method looks like this. This is the method for the back-layer turn</p>
-        <pre><code class="prettyprint">
-    var topTemp = new char[3] { TopLayer[0, 0], 
-      TopLayer[0, 1], TopLayer[0, 2] };
-
-    var bottomTemp = new char[3] { DownLayer[2, 0], 
-      DownLayer[2, 1], DownLayer[2, 2] };
-      
-    var leftTemp = new char[3] { LeftLayer[0, 0], 
-      LeftLayer[1, 0], LeftLayer[2, 0] };
-
-    var rightTemp = new char[3] { RightLayer[0, 2], 
-      RightLayer[1, 2], RightLayer[2, 2] };
-
-    // ---------------------------------------------------------
-    var centers = new char[] { BackLayer[1, 0], 
-      BackLayer[2, 1], BackLayer[1, 2], BackLayer[0, 1] };
-
-    var corners = new char[] { BackLayer[2, 0], 
-      BackLayer[2, 2], BackLayer[0, 2], BackLayer[0, 0] };
-
-    // Corners           
-    BackLayer[0, 0] = corners[0];
-    BackLayer[2, 0] = corners[1];
-    BackLayer[2, 2] = corners[2];
-    BackLayer[0, 2] = corners[3];
-
-    // Centers
-    BackLayer[0, 1] = centers[0];
-    BackLayer[1, 0] = centers[1];
-    BackLayer[2, 1] = centers[2];
-    BackLayer[1, 2] = centers[3];
-    // ---------------------------------------------------------
-
-    // right to top
-    TopLayer[0, 0] = rightTemp[0];
-    TopLayer[0, 1] = rightTemp[1];
-    TopLayer[0, 2] = rightTemp[2];
-
-    // bottom to right            
-    RightLayer[0, 2] = bottomTemp[2];
-    RightLayer[1, 2] = bottomTemp[1];
-    RightLayer[2, 2] = bottomTemp[0];
-
-    // left to bottom
-    DownLayer[2, 0] = leftTemp[0];
-    DownLayer[2, 1] = leftTemp[1];
-    DownLayer[2, 2] = leftTemp[2];
-
-    // top to left
-    LeftLayer[0, 0] = topTemp[2];
-    LeftLayer[1, 0] = topTemp[1];
-    LeftLayer[2, 0] = topTemp[0];</code></pre>
+       
         <p>My first comment on this is that we don't need to keep a copy of each of the layers, in fact we only have to choose
           one corner and one edge.</p>
-        <!--   <pre>
-     <code class="prettyprint">
-    var face = BackLayer[0,0];
-    BackLayer[0,0] = BackLayer[2,0];
-    BackLayer[2,0] = BackLayer[2,2];
-    BackLayer[2,2] = BackLayer[0,2];
-    BackLayer[0,2] = face;
-    
-    var top = TopLayer[0,2];
-    TopLayer[0,2] = RightLayer[2,2];
-    RightLayer[2,2] = DownLayer[2,0];
-    DownLayer[2,0] =  LeftLayer[0,0];
-    LeftLayer[0,0] = top;
 
-    var right = RightLayer[0,2];
-    RightLayer[0,2] = DownLayer[2,2];
-    DownLayer[2,2] = LeftLayer[2,0];
-    LeftLayer[2,0] = TopLayer[0,0];
-    TopLayer[0,0] = right;
-      </code>
-    </pre>-->
-        <h2>Refactoring</h2>
         <h2>
           <u>Testing</u>
         </h2>
@@ -263,6 +143,16 @@
         new RubixCube.Cube().ToString());
     </code></pre>
 
+    <h1><u>Resources</u></h1>
+<p>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</p>
 
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
