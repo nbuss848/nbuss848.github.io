@@ -1,7 +1,7 @@
 footer{
 	background-color: #2B2B2B;
 	min-height: 100px;
-	max-height: 120px;
+	/*max-height: 120px;*/
 	font-weight: bold;
 	color: rgb(190, 190, 190);
 	padding-bottom: 50px;
@@ -12,6 +12,13 @@ footer{
 h4
 {
 	color: #8A0B39;
+	text-transform: uppercase;
+	font-family: 'Bree Serif', serif;
+}
+
+footer h4{
+	color:white;
+	font-weight: bold;
 	text-transform: uppercase;
 	font-family: 'Bree Serif', serif;
 }
