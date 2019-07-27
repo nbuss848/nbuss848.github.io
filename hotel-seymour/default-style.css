@@ -1,3 +1,14 @@
+p{
+	font-size: 16px;
+}
+
+h4
+{
+	color: #8A0B39;
+	text-transform: uppercase;
+	font-family: 'Bree Serif', serif;
+}
+
 footer{
 	background-color: #2B2B2B;
 	min-height: 100px;
@@ -9,22 +20,10 @@ footer{
 	padding-top: 42.5px;
 }
 
-h4
-{
-	color: #8A0B39;
-	text-transform: uppercase;
-	font-family: 'Bree Serif', serif;
-}
-
 footer h4{
-	color:white;
+	color:rgb(190, 190, 190);
 	font-weight: bold;
 	text-transform: uppercase;
-	font-family: 'Bree Serif', serif;
-}
-
-p{
-	font-size: 16px;
 }
 
 .main{
@@ -34,4 +33,4 @@ p{
 .banner{
       background-color: rgb(255,255,255);
       text-align: center;
-    }
+}
