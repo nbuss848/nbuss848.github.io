@@ -1,0 +1,302 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Cheatsheet · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cheatsheet/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="content/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/cheatsheet.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <meta name="theme-color" content="#7952b3">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+</head>
+
+<body class="bg-light">
+
+    <header class="bd-header bg-dark py-3 d-flex align-items-stretch border-bottom border-dark">
+        <div class="container-fluid d-flex align-items-center">
+            <h1 class="d-flex align-items-center fs-4 text-white mb-0">
+              <a href="index.html">  <span><i class="fas fa-home m-2"></i></span></a>
+                   MSSQL Cheatsheet
+            </h1>
+        </div>
+    </header>
+    <aside class="bd-aside sticky-xl-top text-muted align-self-start mb-3 mb-xl-5 px-2">
+        <h2 class="h6 pt-4 pb-3 mb-4 border-bottom">On this page</h2>
+        <nav class="small" id="toc">
+            <ul class="list-unstyled">
+                <li class="my-2">
+                    <button class="btn d-inline-flex align-items-center collapsed" data-bs-toggle="collapse"
+                        aria-expanded="false" data-bs-target="#contents-collapse"
+                        aria-controls="contents-collapse">MSSQL</button>
+                    <ul class="list-unstyled ps-3 collapse" id="contents-collapse">
+                        <li><a class="d-inline-flex align-items-center rounded" href="#utilities">Utilities</a></li>
+                        <li><a class="d-inline-flex align-items-center rounded" href="#advanced">Advanced</a></li>
+                        <li><a class="d-inline-flex align-items-center rounded" href="#operators">Operators</a></li>
+
+                    </ul>
+                </li>   
+            </ul>
+        </nav>
+    </aside>
+    <div class="bd-cheatsheet container-fluid bg-body">
+        <section id="content">
+            <h2 class="sticky-xl-top fw-bold pt-3 pt-xl-5 pb-2 pb-xl-3">Contents</h2>
+
+            <article class="my-3" id="utilities">
+                <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+                    <h3>Utilities</h3>
+                    <a class="d-flex align-items-center" href="#"></a>
+                </div>
+
+                <div>
+                    <div class="bd-example">
+                        <h3>Reset identity column back to 1</h3>
+                        <p>Sometimes have to run command more than once to reseed</p>
+                        <pre class="prettyprint lang-sql">DBCC CHECKIDENT ('[Table]', RESEED, 1)</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>See what is inside a stored procedure without modifying it</h3>
+                        <pre>sp_helptext N'[Stored Procedure Name]'</pre>
+                    </div>  
+                    <div class="bd-example">
+                        <h3>Get the last character of a column if the letter isn't displaying</h3>
+                        <pre></pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3></h3>
+                        <pre>select AscII (right(sku,1) ) as lastchar </pre>
+                    </div>     
+                    <div class="bd-example">
+                        <h3>Put Stored Procedure Result Into Table</h3>
+                        <pre>declare @table Table([Object Name] varchar(100), txt varchar(500))
+                            insert into @table Exec '[Stored Procedure Name]' @params
+                            select * into #temp from @table</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>No lock - We can read the table even if something else is accessing the table</h3>
+                        <pre>SELECT COUNT(*) FROM SalesHistory WITH(NOLOCK)</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>Read Past - Doesn't return locked records</h3>
+                        <pre>SELECT COUNT(*) FROM SalesHistory WITH(ReadPast)</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>Pivot Example</h3>
+                        <pre>select *
+                            from (
+                              select convert(varchar(2), od.AddedDate, 101) as dateadded, sum(od.qty) as totalqty, UPC from Detail od
+                              where year(od.AddedDate) = 2017
+                              group by convert(varchar(2), od.AddedDate, 101), UPC
+                              ) as sourcetable2
+                            PIVOT(
+                            MAX(totalqty)
+                              FOR dateadded in([01],[02],[03],[04],[05],[06],[07],[08],[09],[10],[11],[12])
+                            ) as p</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>Query Tables</h3>
+                        <pre>select * from sys.tables order by modify_date desc</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>Toggle Identity Insert</h3>
+                        <pre>SET IDENTITY_INSERT TableName ON
+                            -- insert ...
+                            SET IDENTITY_INSERT TableName OFF</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>Replace a char code with anything you want</h3>
+                        <pre>REPLACE(value,CHAR(0233),'e')</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>Mass replace characters</h3>
+                        <pre class="prettyprint lang-sql">
+                            update t
+                            set t.field = replace(t.field, b.Letter, b.ReplaceWithLetter)
+                            from table t inner join ACIIRef b on (t.field like '%' +  b.Letter + '%')</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3></h3>
+                        <pre></pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3></h3>
+                        <pre></pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3></h3>
+                        <pre></pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3></h3>
+                        <pre></pre>
+                    </div>
+                </div>
+            </article>
+            <article class="my-3" id="advanced">
+                <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+                  <h3>Advanced</h3>                  
+                </div>
+                <div>
+                    <div class="bd-example">
+                        <h3>Cross Apply</h3>
+                        <pre>select d.ProductId, d.Price1, b.Price as PromotionPrice, b.Description as PromotionDescription
+                            from #details d
+                            inner join product p on p.ProductId = d.ProductId 
+                            CROSS APPLY(
+                                select top 1 * from Promotions promo
+                                where promo.ProductId = p.ProductId and promo.price = 2.99
+                                order by p.enddate desc
+                            ) as b</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>Search for fields in the current database</h3>
+                        <pre>DECLARE @searchtext varchar(60); SET @searchtext = 'fieldname';
+
+                            --Search Tables and Columns
+                            SELECT TABLE_CATALOG as DatabaseName, TABLE_NAME AS  'TableName', COLUMN_NAME AS 'ColumnName'
+                            FROM INFORMATION_SCHEMA.COLUMNS WHERE COLUMN_NAME LIKE '%' + @searchtext + '%' ORDER BY TableName, ColumnName
+                            
+                            --Search Procedure Definitions
+                            SELECT DB_NAME(st.database_id) AS DatabaseName, pr.name AS ProcedureName, 
+                                pr.create_date as CreateDate, pr.modify_date AS LastModifiedDate,
+                                st.last_execution_time as LastExecutionDate, st.cached_time as CachedDate, 
+                                st.execution_count as CountSinceCache, st.total_elapsed_time as ElapsedTimeSinceCache, 
+                                object_definition(st.object_id) as Definition
+                            FROM sys.dm_exec_procedure_stats AS st RIGHT OUTER JOIN sys.procedures AS pr ON st.object_id = pr.object_id
+                            WHERE (st.database_id IS NOT NULL AND st.object_id IS NOT NULL 
+                              AND object_definition(st.OBJECT_ID) LIKE '%' + @searchtext + '%')
+                            ORDER BY st.execution_count DESC
+                            
+                            --Get Stored Procedure Usage Stackup
+                            SELECT DB_NAME(database_id) AS DatabaseName, OBJECT_NAME(object_id) AS StoredProcedure, cached_time as CachedTime, 
+                            last_execution_time as LastExecutionTime, execution_count as ExecutionCount
+                            FROM sys.dm_exec_procedure_stats WHERE DB_NAME(database_id) IS NOT NULL AND OBJECT_NAME(object_id) IS NOT NULL
+                            ORDER BY execution_count DESC --ORDER BY last_execution_time DESC</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>Take row data into column data that is separated by a comma</h3>
+                        <pre>-- You need the substring because you need to cast back to a string from the xml path
+                            select SUBSTRING( (select distinct top 5  COALESCE(loc.LocationId + ', ','')
+                            FROM Locations loc where loc.ProductId= '1' FOR XML PATH('')),1,10000000)</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3>Row_Number(): Useful for updating records when you do not have a common key</h3>
+                        <pre>select ROW_NUMBER () OVER ( order by order.orderid ) AS ROW#, c.clubid
+                            from order o right outer join Club c on c.orderid = o.orderid
+                            where getdate() between c.StartDate and c.EndDate
+                            and c.id is null</pre>
+                    </div>
+                    <div class="bd-example">
+                        <h3></h3>
+                        <pre></pre>
+                    </div>
+                </div>
+            </article>
+            <article class="my-3" id="operators">
+                <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+                    <h3>Operators</h3>
+                    <a class="d-flex align-items-center" href="#"></a>
+                </div>
+                <div>
+                <div class="bd-example">
+                    <h3>BETWEEN</h3>
+                    <p>The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates. The BETWEEN operator is inclusive: begin and end values are included.</p>
+                </div>
+                <div class="bd-example">
+                    <h3>DATENAME</h3>
+                    <pre>SELECT DATENAME(datepart,'2007-10-30 12:15:32.1234567 +05:10')</pre>
+                    <table class="table">
+                        <tr>
+                            <th class="bg-dark text-white">Datepart</th>
+                            <th class="bg-dark text-white">Return Value</th>
+                        </tr>
+                        <tr>
+                            <td>month, mm, m</td>
+                            <td>October</td>
+                        </tr>
+                        <tr>
+                            <td>dayofyear, dy, y</td>
+                            <td>303</td>
+                        </tr>
+                        <tr>
+                            <td>day, dd, d</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>week, wk, ww</td>
+                            <td>44</td>
+                        </tr>
+                        <tr>
+                            <td>weekday, dw</td>
+                            <td>Tuesday</td>
+                        </tr>
+                        <tr>
+                            <td>hour, hh</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>minute, n</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>second, ss, s</td>
+                            <td>32</td>
+                        </tr>
+                        <tr>
+                            <td>ISO_WEEK, ISOWK, ISOWW</td>
+                            <td>44</td>
+                        </tr>
+                    </table>
+                    <a href="https://docs.microsoft.com/en-us/sql/t-sql/functions/datename-transact-sql?view=sql-server-ver15" rel="nofollow">Read More</a>
+                </div>
+                <div class="bd-example">
+                    <h3>Round decimal to two places and round down</h3>
+                    <pre>ROUND(AMOUNT, 2, 1)</pre>
+                </div>
+                <div class="bd-example">
+                    <h3>NULL</h3>
+                    <pre>2 &gt; NULL = FALSE</pre>
+                    <pre>2 &lt; NULL</pre>
+                    <pre>2 / NULL = NULL</pre>
+                </div>
+                <div class="bd-example">
+                    <h3></h3>
+                    <pre></pre>
+                </div>
+            </div>
+            </article>
+        </section>
+    </div>
+
+    <script src="content/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js?v=2"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+</body>
+
+</html>
