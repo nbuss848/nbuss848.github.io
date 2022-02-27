@@ -1,2 +1,2 @@
-# Website redesign #
-A static website for content about myself
+# Neil Busse #
+This repository is a simple static content website that describes me in a nutshell. I am using this as a tool to get the word out about me and the projects I have worked on in my career.  
