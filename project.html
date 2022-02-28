@@ -10,6 +10,8 @@
 
     <link href="content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/portfolio-item.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
   </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -68,28 +70,60 @@
               <li>console example with DI</li>
               <li>Xamarin UI (not working yet)</li>
             </ul>
-          </div>
-    
+          </div>    
         </div>  
+        
         <div class="row">
           <div class="col-sm-12">
             <h3 class="my-3">Goals</h3>
             <p>by priority high -> low</p>
-          <p><input class="" type="checkbox" checked ></input> Set up clean architecture example of a real system</p>
-          <p><input type="checkbox" checked></input> Show that one feature can be reused by multiple different front-end interfaces</p>
-          <p><input type="checkbox" ></input> Create system that allows easy maintainence of to be done tasks.</p>
-          <p><input type="checkbox" ></input> Show all tasks overlapping each-other with a projected completed date based off of previous data.</p>
+            <p><input class="" type="checkbox" checked ></input> Set up clean architecture example of a real system</p>
+            <p><input type="checkbox" checked></input> Show that one feature can be reused by multiple different front-end interfaces</p>
+            <p><input type="checkbox" ></input> Create system that allows easy maintainence of to be done tasks.</p>
+            <p><input type="checkbox" ></input> Show all tasks overlapping each-other with a projected completed date based off of previous data.</p>
           </div>
           <div class="col-sm-12">
             <h3 class="my-3">Roadmap</h3>          
-          <p><input class="" type="checkbox" checked ></input> Create project and link tasks to those projects. Create tasks that can link to parent tasks.</p>
-          <p><input type="checkbox" checked></input> Create React interface</p>
-          <p><input type="checkbox" ></input> Create data-visualization of open and completed tasks in all projects that are created in the system. (Gantt chart?)</p>      
+            <p><input class="" type="checkbox" checked ></input> Create project and link tasks to those projects. Create tasks that can link to parent tasks.</p>
+            <p><input type="checkbox" checked></input> Create React interface</p>
+            <p><input type="checkbox" ></input> Create data-visualization of open and completed tasks in all projects that are created in the system. (Gantt chart?)</p>      
           </div>
-        </div>
-   
+        </div>   
       </div>
 </body>
- 
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <p class="m-0 text-center text-white">Profile <span id="currentyear"></span></p>
+      </div>
+    </div>
+    
+    <div class="row text-center pt-4">
+      <div class="col-sm-4">
+        <a href="https://www.linkedin.com/in/neil-busse-69582069" target='_blank' class="icon"><i
+            class="fa fa-3x fa-linkedin fa-fw"></i></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="https://github.com/nbuss848" target='_blank' class="icon"><i
+            class="fa fa-3x fa-github fa-fw"></i></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="https://www.freecodecamp.com/nbuss848" target='_blank' class="icon"><i
+            class="fa fa-3x fa-free-code-camp fa-fw"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="content/jquery/jquery.min.js"></script>
+<script src="content/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="content/utils.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $("#currentyear").text(getCurrentYear());
+  });
+</script>
 
   </html>   
