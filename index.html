@@ -3,37 +3,109 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Neil Busse - Software Developer Portfolio">
   <meta name="author" content="Neil Busse">
 
-  <title>Neil Busse - Portfilio</title>
+  <title>Neil Busse - Software Developer</title>
 
-  <link href="content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/portfolio-item.css" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <style>
+    .section-heading {
+      border-bottom: 3px solid #007bff;
+      padding-bottom: 8px;
+      margin-bottom: 28px;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white;
+      padding: 70px 0 48px;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 4px solid #007bff;
+    }
+
+    .contact-link {
+      color: rgba(255, 255, 255, 0.85);
+      margin: 0 10px;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 52px 0;
+    }
+
+    .section-alt {
+      background-color: #f8f9fa;
+    }
+
+    .experience-item {
+      border-left: 4px solid #007bff;
+      padding-left: 20px;
+      margin-bottom: 36px;
+    }
+
+    .experience-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .experience-company {
+      font-weight: 600;
+      color: #0056b3;
+      font-size: 0.95rem;
+    }
+
+    .experience-dates {
+      color: #6c757d;
+      font-size: 0.875rem;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      background-color: #e9ecef;
+      border-radius: 4px;
+      padding: 3px 9px;
+      margin: 3px 2px;
+      font-size: 0.82rem;
+    }
+  </style>
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Profile</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      <a class="navbar-brand" href="index.html">Neil Busse</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">
-              <span class="sr-only">(current)</span>
-            </a>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#experience">Experience</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="project.html">Project System</a>
+            <a class="nav-link" href="#skills">Skills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" target="_blank" href="https://www.behance.net/gallery/80234939/XD-Daily-Challenge-MAY-2019">Adobe XD</a>
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#education">Education</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="CheatSheet.html">Cheat Sheet</a>
@@ -42,308 +114,301 @@
       </div>
     </div>
   </nav>
-  <div class="container">
-    <h1 class="my-4">Profile</h1>
-    <div class="row">
-      <div class="col-md-4 col-sm-12">
-        <img style="height:300px" class="img img-fluid rounded"
-          src="images/profile.jpg"
-          alt="Neil Busse Profile Image">
 
-        <div class="row pt-4">
-          <div class="col">
-            <a href="https://www.linkedin.com/in/neil-busse-69582069" target='_blank' class="icon"><i
-                class="fa fa-3x fa-linkedin fa-fw"></i></a>
-          </div>
-          <div class="col">
-            <a href="https://github.com/nbuss848" target='_blank' class="icon"><i
-                class="fa fa-3x fa-github fa-fw"></i></a>
-          </div>
-          <div class="col">
-            <a href="https://www.freecodecamp.com/nbuss848" target='_blank' class="icon"><i
-                class="fa fa-3x fa-free-code-camp fa-fw"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-8 col-sm-12">
-        <h2>Mission statement</h2>
-        <p>Create software that makes people's lives easier by developing meaningful interactions, real world database
-          designs, and scalable infrastructures.</p>
-
-        <h2>What I'm doing</h2>
-        <p>I am currently working at Herrschners as a full-time software developer.
-          I am passionate about developing my own software and creating websites in my free time. I look to become a
-          better programmer by learning everything I possibly can.
-          <br />
-          <br />
-          In the past year, I have helped the company I work for map out many complicated systems and implement features
-          end to end. Of the applications I have helped within the last year I have worked on an inventory application
-          that has helped my company save 54% labor costs YOY. I am extremely grateful to have meaningful relationships
-          with people that drive me to want to change their lives.
-        </p>
+  <!-- Hero -->
+  <section class="hero-section" id="hero">
+    <div class="container text-center">
+      <img class="rounded-circle mb-3 profile-img"
+        src="images/profile.jpg"
+        alt="Neil Busse Profile Image">
+      <h1 class="mb-1">Neil Busse</h1>
+      <h5 class="text-secondary mb-4">Software Developer</h5>
+      <div>
+        <a href="mailto:nbuss848@gmail.com" class="contact-link text-decoration-none" title="Email">
+          <i class="fa fa-2x fa-envelope fa-fw"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/neil-busse-69582069" target="_blank" class="contact-link text-decoration-none" title="LinkedIn">
+          <i class="fa fa-2x fa-linkedin fa-fw"></i>
+        </a>
+        <a href="https://github.com/nbuss848" target="_blank" class="contact-link text-decoration-none" title="GitHub">
+          <i class="fa fa-2x fa-github fa-fw"></i>
+        </a>
+        <a href="https://www.freecodecamp.com/nbuss848" target="_blank" class="contact-link text-decoration-none" title="freeCodeCamp">
+          <i class="fa fa-2x fa-free-code-camp fa-fw"></i>
+        </a>
       </div>
     </div>
-    <div class="row">
-      <p>&nbsp;</p>
+  </section>
+
+  <!-- Summary -->
+  <section class="section-alt" id="summary">
+    <div class="container">
+      <h2 class="section-heading">Summary</h2>
+      <p class="lead">
+        Software developer with 10+ years of professional experience building end-to-end solutions across backend
+        services, database design, and user-facing applications. Passionate about creating software that makes people's
+        lives easier through meaningful interactions, intuitive database designs, and scalable infrastructure. Currently
+        exploring agentic AI workflows to improve developer productivity and automate complex processes.
+      </p>
     </div>
-    <div class="row">
-      <div class="col-md-4 col-sm-12">
-        <div class="card">
-          <div class="card-header bg-info">
-            <h3>User Experience</h3>
+  </section>
+
+  <!-- Work Experience -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-heading">Work Experience</h2>
+
+      <div class="experience-item">
+        <div class="row">
+          <div class="col-md-3 col-sm-12 mb-2">
+            <div class="experience-dates">April 2022 – Present</div>
+            <div class="experience-company">Tec Mailing Solutions Inc</div>
           </div>
-          <div class="card-body">
-            <p>
-              I value simple content structure, clean design patterns, and thoughtful interactions.
-            </p>
-            <p>
-            <h3>Things I enjoy designing</h3>
-            </p>
-            <p>
-              UX, UI, Web, Mobile, Apps, Logos
-            </p>
-            <h3>
-              Design Tools
-            </h3>
+          <div class="col-md-9 col-sm-12">
+            <h5 class="mb-2">Software Developer</h5>
             <ul>
-              <li>Bootstrap</li>
-              <li>Templates</li>
-              <li>Themes</li>
-              <li>Pen & Paper</li>
-              <li>Adobe XD</li>
-              <li>Webflow</li>
+              <li>Lead application deployments across Azure services, owning release consistency and reliability end to
+                end.</li>
+              <li>Design, build, and maintain automated build and release pipelines in Azure DevOps, streamlining
+                delivery across development teams.</li>
+              <li>Establish and enforce code review standards and CI/CD best practices across the organization.</li>
+              <li>Build responsive, user-focused interfaces using Blazor on .NET.</li>
+              <li>Architect and manage Azure infrastructure including App Services, deployment slots, Blob Storage, and
+                queue-based messaging systems.</li>
+              <li>Serve as the organization's AI advocate — researching and communicating the latest standards and best
+                practices for agentic workflows.</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 col-sm-12">
-        <div class="card">
-          <div class="card-header bg-info">
-            <h3>Server Side</h3>
+      <div class="experience-item">
+        <div class="row">
+          <div class="col-md-3 col-sm-12 mb-2">
+            <div class="experience-dates">2015 – April 2022</div>
+            <div class="experience-company">Herrschners</div>
           </div>
-          <div class="card-body">
-            <p>
-              I tend to code things from scratch, and enjoy bringing ideas to life in the browser.
-            </p>
-            <h3>
-              Languages I know
-            </h3>
-            <p>
-              C#, DotNet Core, ASP.Net, Javascript
-            </p>
-            <h3>Dev Tools</h3>
+          <div class="col-md-9 col-sm-12">
+            <h5 class="mb-2">Software Developer</h5>
             <ul>
-              <li>Atom</li>
-              <li>Visual Studio Code</li>
-              <li>Bitbucket</li>
-              <li>Bootstrap</li>
-              <li>Codepen</li>
-              <li>Github</li>
-              <li>Gitlab</li>
-              <li>Terminal</li>
-              <li>Postman</li>
-              <li>SSMS, Azure Data Studio</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="col-md-4 col-sm-12">
-        <div class="card">
-          <div class="card-header bg-info">
-            <h3>Database</h3>
-
-          </div>
-          <div class="card-body">
-            <p>
-              I love creating database structures that make sense and are intuitive.
-            </p>
-            <h3>
-              My Main Tool
-            </h3>
-            <p>
-              Microsoft SQL Server
-            </p>
-            <h3>
-              Skills
-            </h3>
-            <ul>
-              <li>Query optimization</li>
-              <li>Triggers</li>
-              <li>Stored Procedures</li>
-              <li>Tables and keys</li>
-              <li>Indexes</li>
-              <li>Functions</li>
-              <li>Constraints</li>
+              <li>Modernized the inventory process from a paper-based workflow to a fully digital end-to-end system,
+                reducing labor costs by 54% year-over-year.</li>
+              <li>Designed and built a BigCommerce REST API integration with a home-grown ERP system, covering order
+                import, status updates, and tracking synchronization on a scheduled basis.</li>
+              <li>Integrated the Braintree .NET SDK to support multiple payment processors within the existing ERP,
+                enabling safe coexistence of legacy and new payment flows.</li>
+              <li>Built a scalable shipping platform integration layer supporting real-time label print requests across
+                multiple shipping providers.</li>
+              <li>Led requirements gathering and documentation for a full system redesign, and contributed to the MVC
+                implementation.</li>
             </ul>
           </div>
         </div>
       </div>
+
     </div>
-    <h3 class="my-4">Career Projects (2015 - Current)</h3>
-    
-    <div class="row">
-      <div class="col-md-6 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">System Redesign</h5>
-            <h6 class="card-subtitle mb-2 text-muted">In Process</h6>
-            <p class="card-text">Assist in modeling discussions and point out flaws with my extensive knowledge of the company. 
-              Participate and develop requirement documents for the system to be built to. 
-              We're in the process of developing a website in MVC to use newly defined model and business logic.</p>
+  </section>
 
-            <!-- <a href="#" class="btn btn-link" target="_blank"></a>
-            <a href="#" class="btn btn-primary"></a> -->
+  <!-- Skills -->
+  <section class="section-alt" id="skills">
+    <div class="container">
+      <h2 class="section-heading">Skills</h2>
+      <div class="row">
+
+        <div class="col-md-4 col-sm-12 mb-4">
+          <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0">Design &amp; UX</h5>
+            </div>
+            <div class="card-body">
+              <p class="text-muted small">I value simple content structure, clean design patterns, and thoughtful
+                interactions.</p>
+              <h6>Tools</h6>
+              <div>
+                <span class="skill-tag">Figma</span>
+                <span class="skill-tag">Adobe XD</span>
+                <span class="skill-tag">Webflow</span>
+                <span class="skill-tag">Bootstrap</span>
+                <span class="skill-tag">Pen &amp; Paper</span>
+              </div>
+              <h6 class="mt-3">Focus Areas</h6>
+              <div>
+                <span class="skill-tag">UX</span>
+                <span class="skill-tag">UI</span>
+                <span class="skill-tag">Web</span>
+                <span class="skill-tag">Mobile</span>
+                <span class="skill-tag">Prototyping</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div> 
-      <div class="col-md-6 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Inventory System</h5>            
-            <h6 class="card-subtitle mb-2 text-muted">Completed</h6>
-            <p class="card-text">Assisted in modernizing the inventory process from a paper process to an end to end digital one. 
-              Saving the company 54% labor costs YOY. Created workflows and database models from scratch and implemented it feature by feature. </p>
 
-            <!-- <a href="#" class="btn btn-link" target="_blank"></a>
-            <a href="#" class="btn btn-primary"></a> -->
+        <div class="col-md-4 col-sm-12 mb-4">
+          <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0">Development</h5>
+            </div>
+            <div class="card-body">
+              <p class="text-muted small">I tend to code things from scratch and enjoy bringing ideas to life in the
+                browser and beyond.</p>
+              <h6>Languages &amp; Frameworks</h6>
+              <div>
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">.NET Core</span>
+                <span class="skill-tag">ASP.NET</span>
+                <span class="skill-tag">Blazor</span>
+                <span class="skill-tag">JavaScript</span>
+              </div>
+              <h6 class="mt-3">Cloud &amp; DevOps</h6>
+              <div>
+                <span class="skill-tag">Azure</span>
+                <span class="skill-tag">Azure DevOps</span>
+                <span class="skill-tag">CI/CD</span>
+                <span class="skill-tag">Azure App Services</span>
+                <span class="skill-tag">Blob Storage</span>
+              </div>
+              <h6 class="mt-3">Tools &amp; Workflows</h6>
+              <div>
+                <span class="skill-tag">Agentic Workflows</span>
+                <span class="skill-tag">GitHub Copilot</span>
+                <span class="skill-tag">Claude AI</span>
+                <span class="skill-tag">Visual Studio Code</span>
+                <span class="skill-tag">GitHub</span>
+                <span class="skill-tag">Postman</span>
+                <span class="skill-tag">Azure Data Studio</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div> 
-      <div class="col-md-6 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Integration with BigCommerce</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Completed</h6>
-            <p class="card-text">Developed integration to the BigCommerce API to a home-grown ERP system.
-              Understand the company’s core order functionality in order to map from the big commerce RESTFUL API to the company’s ordering system. 
-              Create middle layer between domain and API endpoints to allow scalable design for future RESTFUL integrations. 
-              Includes updating tracking, order status, and importing order data on a scheduled system. 
-            </p>
 
-            <!-- <a href="#" class="btn btn-link" target="_blank"></a>
-            <a href="#" class="btn btn-primary"></a> -->
+        <div class="col-md-4 col-sm-12 mb-4">
+          <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0">Database</h5>
+            </div>
+            <div class="card-body">
+              <p class="text-muted small">I love creating database structures that make sense and are intuitive to
+                maintain.</p>
+              <h6>Platform</h6>
+              <div>
+                <span class="skill-tag">Microsoft SQL Server</span>
+                <span class="skill-tag">SSMS 22</span>
+              </div>
+              <h6 class="mt-3">Capabilities</h6>
+              <div>
+                <span class="skill-tag">Query Optimization</span>
+                <span class="skill-tag">Stored Procedures</span>
+                <span class="skill-tag">Triggers</span>
+                <span class="skill-tag">Indexes</span>
+                <span class="skill-tag">Functions</span>
+                <span class="skill-tag">Constraints</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div> 
-      <div class="col-md-6 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Integration with Braintree</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Completed</h6>
-            <p class="card-text">Developed integration to the Braintree .Net SDK to a home-grown ERP system. Fully understand each component of the system to know how and where to plug in new architecture to support the Braintree processor. 
-              Develop into existing code base to safely support multiple payment providers depending on payment provider type when the order was placed.</p>
 
-            <!-- <a href="#" class="btn btn-link" target="_blank"></a>
-            <a href="#" class="btn btn-primary"></a> -->
-          </div>
-        </div>
-      </div> 
-
-      
-      <div class="col-md-6 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Shipping Platform Integrations</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Completed</h6>
-            <p class="card-text">Understand operations in order to support real-time print requests to our integration to our shipment platform. 
-              Develop code to integrate and call different shipping platforms and scale into the future, by allowing any number of shipping providers.</p>
-
-            <!-- <a href="#" class="btn btn-link" target="_blank"></a>
-            <a href="#" class="btn btn-primary"></a> -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="my-4">Personal Projects</h3>
-    <div class="row">
-      <div class="col-md-6 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Project Management System</h5>
-            <p class="card-text">Yet another project management tool that hopes to set expectations right in the first place and report on true project progress.
-              Develop visualizations of data to keep a clear understanding of what is happening in the day to day of software development. Develop tools that can manage technical debt.
-            </p>
-
-            <a href="https://github.com/nbuss848/ProjectManagementSystem" class="btn btn-link" target="_blank">View Code
-              Source</a>
-            <a href="project.html" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">XD Weekly Challenge</h5>
-            <p class="card-text">A project to discover more about the design process. Took 7 weeks to do the Adobe XD challenges by Howard Pinsky. 
-              Joined the Discord community to provide and receive feedback with community members. 
-              Learned about making prototypes and interactive designs to expedite the development process by getting feedback early in the process.</p>
-
-            <a href="https://www.behance.net/gallery/80234939/XD-Daily-Challenge-MAY-2019" class="btn btn-link" target="_blank">View Demo</a>            
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Rubix cube solver / Viewer</h5>
-            <p class="card-text">A program that was developed to solve a rubix cube.</p>
-
-            <a href="#" class="btn btn-primary" target="_blank">Images</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-sm-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">MSSQL Cheatsheet</h5>
-            <p class="card-text">A cheatsheet that I use in production.</p>
-
-            <a href="CheatSheet.html" class="btn btn-primary">View</a>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Personal Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-heading">Personal Projects</h2>
+      <div class="row">
+
+        <div class="col-md-6 col-sm-12 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Project Management System</h5>
+              <p class="card-text">A project management tool focused on setting realistic expectations and reporting on
+                true progress. Built on clean architecture with support for multiple front-end interfaces (Electron,
+                Blazor, React). Features data visualizations to surface day-to-day development status and tools to
+                manage technical debt.</p>
+              <a href="https://github.com/nbuss848/ProjectManagementSystem" class="btn btn-outline-secondary btn-sm"
+                target="_blank">View Source</a>
+              <a href="project.html" class="btn btn-primary btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">MSSQL Cheatsheet</h5>
+              <p class="card-text">A living reference document for Microsoft SQL Server syntax and patterns used
+                regularly in production. Covers queries, stored procedures, indexes, and more.</p>
+              <a href="CheatSheet.html" class="btn btn-primary btn-sm">View</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Adobe XD Weekly Challenge</h5>
+              <p class="card-text">Completed 7 weeks of Adobe XD challenges by Howard Pinsky. Participated in the
+                Discord design community to give and receive feedback. Focused on interactive prototyping to accelerate
+                real-world development cycles.</p>
+              <a href="https://www.behance.net/gallery/80234939/XD-Daily-Challenge-MAY-2019"
+                class="btn btn-outline-secondary btn-sm" target="_blank">View on Behance</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section-alt" id="education">
+    <div class="container">
+      <h2 class="section-heading">Education</h2>
+      <div class="card">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-md-8 col-sm-12">
+              <h5 class="mb-1">Bachelor of Science &ndash; Computer Information Systems</h5>
+              <p class="mb-0 text-muted">University of Wisconsin</p>
+            </div>
+            <div class="col-md-4 col-sm-12 text-md-end mt-2 mt-md-0">
+              <span class="badge bg-secondary p-2">2011 &ndash; 2015</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer class="py-5 bg-dark">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <p class="m-0 text-center text-white">Profile <span id="currentyear"></span></p>
+      <div class="row text-center">
+        <div class="col">
+          <a href="mailto:nbuss848@gmail.com" class="icon text-white mx-2" title="Email">
+            <i class="fa fa-2x fa-envelope fa-fw"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/neil-busse-69582069" target="_blank" class="icon text-white mx-2"
+            title="LinkedIn">
+            <i class="fa fa-2x fa-linkedin fa-fw"></i>
+          </a>
+          <a href="https://github.com/nbuss848" target="_blank" class="icon text-white mx-2" title="GitHub">
+            <i class="fa fa-2x fa-github fa-fw"></i>
+          </a>
+          <a href="https://www.freecodecamp.com/nbuss848" target="_blank" class="icon text-white mx-2"
+            title="freeCodeCamp">
+            <i class="fa fa-2x fa-free-code-camp fa-fw"></i>
+          </a>
         </div>
       </div>
-
-      <div class="row text-center pt-4">
-        <div class="col">
-          <a href="https://www.linkedin.com/in/neil-busse-69582069" target='_blank' class="icon text-white"><i
-              class="fa fa-3x fa-linkedin fa-fw"></i></a>
-        </div>
-        <div class="col">
-          <a href="https://github.com/nbuss848" target='_blank' class="icon text-white"><i
-              class="fa fa-3x fa-github fa-fw"></i></a>
-        </div>
-        <div class="col">
-          <a href="https://www.freecodecamp.com/nbuss848" target='_blank' class="icon text-white"><i
-              class="fa fa-3x fa-free-code-camp fa-fw"></i></a>
-        </div>
-      </div>
+      <p class="m-0 text-center text-white mt-3">Neil Busse &copy; <span id="currentyear"></span></p>
     </div>
   </footer>
 
-  <script src="content/jquery/jquery.min.js"></script>
-  <script src="content/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="content/utils.js"></script>
-
   <script>
-    $(document).ready(function () {
-      $("#currentyear").text(getCurrentYear());
-    });
+    document.getElementById("currentyear").textContent = getCurrentYear();
   </script>
 
 </body>
-
 </html>
